@@ -1,0 +1,29 @@
+
+<div class="container">
+    <%= simple_form_for(@company) do |c|%>
+
+        <%= c.input :name, required: false, 
+                        hint: 'Name of the company',
+                        input_html: { placeholder: 'required' } %>
+        <%= c.input :neighborhood %>
+        <%= c.input :city %>
+        <%= c.input :zip_code %>
+        <%= c.input :cnpj %>
+        <%= c.input :phone %>
+        <%= c.input :contact_name %>
+        <%= c.input :contact_email %>
+        <%= c.input :current_certification %>
+        <%= c.submit class: 'btn btn-primary' %>
+
+    <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
