@@ -1,0 +1,14 @@
+<%= simple_form_for(@user) do |u| %>
+
+  <%= u.input :first_name, required: false, 
+                      hint: 'describe the question',
+                      input_html: { placeholder: 'required' } %>
+  <%= u.input :last_name, required: false, 
+                      hint: 'describe the question',
+                      input_html: { placeholder: 'required' } %>
+  <%= u.input :email, input_html: { autocomplete: 'email' } %>
+  <%= u.input :password, input_html: { autocomplete: 'current-password' } %>
+  <%= u.input :password_confirmation %>
+
+  <%= u.submit class: 'btn btn-primary' %>
+<% end %>

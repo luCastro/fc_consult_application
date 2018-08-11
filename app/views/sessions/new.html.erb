@@ -1,0 +1,15 @@
+
+
+
+
+
+<%= simple_form_for :session, url: session_path do |s| %>
+  
+  <%= s.input :email, input_html: { autocomplete: 'email' } %>
+  <%= s.input :password, input_html: { autocomplete: 'current-password' } %>
+  <%= s.submit "Sign In" %>
+
+<% end %>
+
+
+  

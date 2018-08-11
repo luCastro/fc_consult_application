@@ -3,4 +3,10 @@ Rails.application.routes.draw do
 
   resources :companies
 
+  resources :users
+
+  resource :session, only: [:new, :create, :destroy]
+
+  get('/', { to: 'welcome#index', as: 'home' })
+
 end
