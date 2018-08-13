@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_173934) do
+ActiveRecord::Schema.define(version: 2018_08_13_214335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,10 +82,10 @@ ActiveRecord::Schema.define(version: 2018_08_13_173934) do
     t.text "observation"
     t.text "improvement"
     t.text "conclusion"
-    t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_rat_reports_on_company_id"
+    t.bigint "audit_id"
+    t.index ["audit_id"], name: "index_rat_reports_on_audit_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2018_08_13_173934) do
   end
 
   add_foreign_key "audits", "companies"
-  add_foreign_key "rat_reports", "companies"
+  add_foreign_key "rat_reports", "audits"
   add_foreign_key "teams", "audits"
   add_foreign_key "teams", "users"
 end

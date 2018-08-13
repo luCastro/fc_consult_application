@@ -1,5 +1,7 @@
 class Company < ApplicationRecord
 
+    has_many :audit, dependent: :destroy
+
     validates(
             :name, 
             presence: true, 
