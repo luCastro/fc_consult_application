@@ -10,7 +10,6 @@ class CreateAudits < ActiveRecord::Migration[5.2]
       t.timestamp :start_date
       t.timestamp :end_date
       t.references :company, foreign_key: true
-      t.references :rat_report, foreign_key: true
 
       t.timestamps
     end

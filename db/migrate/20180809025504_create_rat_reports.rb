@@ -6,6 +6,7 @@ class CreateRatReports < ActiveRecord::Migration[5.2]
       t.text :observation
       t.text :improvement
       t.text :conclusion
+      t.references :company, foreign_key: true
 
       t.timestamps
     end

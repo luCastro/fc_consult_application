@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_11_061229) do
+ActiveRecord::Schema.define(version: 2018_08_13_173934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,11 +56,9 @@ ActiveRecord::Schema.define(version: 2018_08_11_061229) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.bigint "company_id"
-    t.bigint "rat_report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_audits_on_company_id"
-    t.index ["rat_report_id"], name: "index_audits_on_rat_report_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -84,8 +82,20 @@ ActiveRecord::Schema.define(version: 2018_08_11_061229) do
     t.text "observation"
     t.text "improvement"
     t.text "conclusion"
+    t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_rat_reports_on_company_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "audit_id"
+    t.boolean "manage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["audit_id"], name: "index_teams_on_audit_id"
+    t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,5 +110,7 @@ ActiveRecord::Schema.define(version: 2018_08_11_061229) do
   end
 
   add_foreign_key "audits", "companies"
-  add_foreign_key "audits", "rat_reports"
+  add_foreign_key "rat_reports", "companies"
+  add_foreign_key "teams", "audits"
+  add_foreign_key "teams", "users"
 end
