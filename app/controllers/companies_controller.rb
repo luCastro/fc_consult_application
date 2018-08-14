@@ -18,7 +18,10 @@ class CompaniesController < ApplicationController
         @company = Company.find params[:id]
     end
 
-    
+    def index
+        @companies = Company.all
+    end
+
     private   
     def company_params
         params.require(:company).permit(:name, :neighborhood, :city, :zip_code, :cnpj, 

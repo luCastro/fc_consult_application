@@ -29,13 +29,13 @@ gem 'faker'
 gem 'cancancan'
 gem 'bootstrap'
 gem 'jquery-rails'
-gem 'letter_opener'
 gem 'simple_form'
 
 
 gem 'inherited_resources'
 gem 'activeadmin'
 gem 'devise'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

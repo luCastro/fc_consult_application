@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :audits
+
   resource :session, only: [:new, :create, :destroy]
 
   get('/', { to: 'welcome#index', as: 'home' })
