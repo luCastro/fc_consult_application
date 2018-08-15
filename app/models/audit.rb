@@ -7,4 +7,5 @@ class Audit < ApplicationRecord
   has_many :teamers, through: :teams, source: :user
   
 
+
 end

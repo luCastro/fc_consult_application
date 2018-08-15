@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :audits
+  resources :audits, only: [:show, :index] do
+
+    resources :rat_reports, shallow: true, only: [:new, :show, :index, :create, :update]
+
+  end
 
   resource :session, only: [:new, :create, :destroy]
 

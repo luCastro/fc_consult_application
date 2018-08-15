@@ -1,0 +1,19 @@
+<ul>
+  <% @audits.each do |audit| %>
+    <li>
+      <%= link_to(
+        audit.activity,
+        audit_path(audit),
+        class: "awesome-tooltip",
+      ) %>
+      <br />
+      <%= audit_path(audit) %>
+      <br>
+      <%= audit_path(audit.id) %>
+      <br>
+      <small>
+        Posted <%= time_ago_in_words(audit.created_at) %> ago
+      </small>
+    </li>
+  <% end %>
+</ul>

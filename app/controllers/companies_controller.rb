@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
-
+    
+    before_action :authenticate_user!, only: [:new,:show, :index, :create]
+    
     def new
         @company = Company.new
     end
