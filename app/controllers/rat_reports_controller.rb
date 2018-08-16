@@ -21,8 +21,19 @@ class RatReportsController < ApplicationController
         @rat_report = RatReport.find params[:id]
     end
 
-    def update
+    def edit
+        @rat_report = RatReport.find params[:id]
+    end
 
+    def update
+        
+        @rat_report = RatReport.find params[:id]
+
+        if @rat_report.update(rat_report_params)
+            redirect_to rat_report_path(@rat_report.id)
+          else
+            render :edit
+        end
     end
 
     private
@@ -32,20 +43,3 @@ class RatReportsController < ApplicationController
     end
 
 end
-
-
-
-
-
-
-    if @answer.save
-      if @question.user.present?
-
-      end
-
-
-
-
-    #   rails g migration RemoveCountryFromSampleApps country:string
-
-    #    rails generate migration RemovePartNumberFromProducts part_number:string

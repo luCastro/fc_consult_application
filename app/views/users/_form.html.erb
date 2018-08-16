@@ -1,14 +1,12 @@
-<%= simple_form_for(@user) do |u| %>
 
-  <%= u.input :first_name, required: false, 
-                      hint: 'describe the question',
-                      input_html: { placeholder: 'required' } %>
-  <%= u.input :last_name, required: false, 
-                      hint: 'describe the question',
-                      input_html: { placeholder: 'required' } %>
-  <%= u.input :email, input_html: { autocomplete: 'email' } %>
-  <%= u.input :password, input_html: { autocomplete: 'current-password' } %>
+<%= simple_form_for @user do |u| %>
+
+  <%= u.input :first_name %>
+  <%= u.input :last_name%>
+  <%= u.input :email %>
+  <%= u.input :password %>
   <%= u.input :password_confirmation %>
 
-  <%= u.submit class: 'btn btn-primary' %>
+  <%= u.submit 'Update', class: 'btn btn-primary' %>
 <% end %>
+

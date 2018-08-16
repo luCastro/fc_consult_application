@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user!, only: [:update, :edit]
 
- 
-    def index
-        @users = User.all.order(created_at: :desc)
+    def new
+
+    end
+
+    def create
+
     end
 
     def show
@@ -10,9 +14,11 @@ class UsersController < ApplicationController
     end
 
     def edit
+        @user = User.find params[:id]
     end
 
     def  update
+        @user = @current_user
 
         if @user.update(user_params)
             redirect_to user_path(@user.id)
@@ -24,7 +30,7 @@ class UsersController < ApplicationController
     private
     def user_params
         params.require(:user).permit(
-          :first_name, :last_name, :address, :email, :role, :password, :password_confirmation
+          :first_name, :last_name, :email, :role, :password, :password_confirmation
         )
     end
 
