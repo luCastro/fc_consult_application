@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_214335) do
+ActiveRecord::Schema.define(version: 2018_08_16_024458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,29 +51,24 @@ ActiveRecord::Schema.define(version: 2018_08_13_214335) do
     t.string "target"
     t.string "criterion"
     t.string "requirement"
-    t.integer "duration"
     t.string "audit_doc"
     t.datetime "start_date"
     t.datetime "end_date"
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "process_number"
+    t.string "scope"
     t.index ["company_id"], name: "index_audits_on_company_id"
   end
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.string "address"
-    t.string "neighborhood"
-    t.string "city"
-    t.string "zip_code"
     t.string "cnpj"
-    t.string "phone"
-    t.string "contact_name"
-    t.string "contact_email"
     t.string "current_certification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "business_name"
   end
 
   create_table "rat_reports", force: :cascade do |t|
@@ -86,6 +81,25 @@ ActiveRecord::Schema.define(version: 2018_08_13_214335) do
     t.datetime "updated_at", null: false
     t.bigint "audit_id"
     t.index ["audit_id"], name: "index_rat_reports_on_audit_id"
+  end
+
+  create_table "sites", force: :cascade do |t|
+    t.string "line_1"
+    t.string "line_2"
+    t.string "line_3"
+    t.string "neighborhood"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.string "telephone"
+    t.string "contact_name"
+    t.string "contact_email"
+    t.float "longitude"
+    t.float "latitude"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_sites_on_company_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -111,6 +125,7 @@ ActiveRecord::Schema.define(version: 2018_08_13_214335) do
 
   add_foreign_key "audits", "companies"
   add_foreign_key "rat_reports", "audits"
+  add_foreign_key "sites", "companies"
   add_foreign_key "teams", "audits"
   add_foreign_key "teams", "users"
 end

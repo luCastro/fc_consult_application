@@ -9,6 +9,7 @@ PASSWORD = "adminLuciana"
 
 RatReport.delete_all
 Team.delete_all
+Site.delete_all
 Audit.delete_all
 Company.delete_all
 User.delete_all
@@ -49,33 +50,50 @@ puts Cowsay.say "Created #{users.count} users", :tux
     
     c = Company.create(
       name: company_name,
-      address: Faker::Address.street_address,
-      neighborhood: Faker::Address.community,
-      city: Faker::Address.city,
-      zip_code:Faker::Address.zip,
+      business_name: company_name,
       cnpj: Faker::Company.french_siren_number,
-      phone:Faker::Address.postcode,
-      contact_name: first_name,
-      contact_email:"#{first_name.downcase}@#{company_name.downcase}.com",
       current_certification: Faker::Company.catch_phrase
     )
+
+    if c.valid?
+        rand(1...3).times do
+            Site.create(
+                line_1: Faker::Address.street_address,
+                line_2: "address continuation",
+                line_3: "12345",            
+                neighborhood: Faker::Address.community,
+                city: Faker::Address.city,
+                postal_code:Faker::Address.zip,
+                telephone:Faker::Address.postcode,
+                contact_name: first_name,
+                contact_email:"#{first_name.downcase}@#{company_name.downcase}.com",
+                # longitude:
+                # latidude:
+                company: c
+            )
+        end
+    end
 end
 
 companies = Company.all
+sites = Site.all
 
 
 puts Cowsay.say("Created #{companies.count} companies", :frogs)
+puts Cowsay.say("Created #{sites.count} sites", :frogs)
+
 
 20.times do
     actvities = ["Security Audit", "Health Audit", "Technology Audit", "Enviroment Audit"]
     a = Audit.create(
+        process_number: Faker::Company.french_siren_number,
+        scope: Faker::Company.bs,
         activity: actvities.sample,
         company: companies.sample,
         target: Faker::Company.catch_phrase,
         criterion: Faker::Company.bs,
         requirement: Faker::Company.bs,
         audit_doc: Faker::Company.bs,
-        duration:2,
         start_date: Date.today,
         end_date: Faker::Date.between(2.days.ago, Date.today),
     )

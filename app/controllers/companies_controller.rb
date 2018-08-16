@@ -2,20 +2,6 @@ class CompaniesController < ApplicationController
     
     before_action :authenticate_user!, only: [:new,:show, :index, :create]
     
-    def new
-        @company = Company.new
-    end
-
-    def create
-        @company =Company.new company_params
-
-        if @company.save
-            redirect_to company_path(@company)
-        else
-            render :new
-        end
-    end
-
     def show
         @company = Company.find params[:id]
     end

@@ -18,17 +18,12 @@ class RatReportsController < ApplicationController
     end
 
     def show
-
-    end
-
-    def index
-
+        @rat_report = RatReport.find params[:id]
     end
 
     def update
 
     end
-
 
     private
     def rat_report_params
@@ -47,3 +42,10 @@ end
       if @question.user.present?
 
       end
+
+
+
+
+    #   rails g migration RemoveCountryFromSampleApps country:string
+
+    #    rails generate migration RemovePartNumberFromProducts part_number:string
