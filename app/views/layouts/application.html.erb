@@ -11,6 +11,25 @@
 
   <body>
     <div class="container">
+      <nav>
+        <%= link_to 'Home', home_path %>
+        |
+        <% if user_signed_in? %>
+          <%= link_to 'User Profile', user_path(current_user.id) %>
+          |
+          <%= link_to 'Your audits', audits_path %>
+          |
+          <span>Hi, <%= current_user.first_name %></span>
+          |
+          <%= link_to(
+            'Sign Out',
+            session_path,
+            method: :delete
+          ) %>
+        <% else %>
+          <%= link_to('Sign In', new_session_path) %>
+        <% end %>
+      </nav>
 
       <% flash.each do |type, message| %>
         <div class="flash flash-<%= type %>">
@@ -18,23 +37,10 @@
         </div>
       <% end %>
 
-      <% if current_user.present? %>
-        <span>Hi, <%= current_user.first_name %></span>
-        |
-        <%= link_to(
-          'Sign Out',
-          session_path,
-          method: :delete
-        ) %>
-      <% else %>
-        <%= link_to('Sign In', new_session_path) %>
-      <% end %>
- 
       <%= yield %>
     </div>
   </body>
 </html>
-
 
 
 

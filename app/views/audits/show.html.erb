@@ -26,7 +26,30 @@
   <%= @audit.end_date%>
 </h5>
 
-
-
+<ul>
+  <% @sites.each do |site| %>
+    <li>
+        <p>Adress<p>
+      <p>
+        <%= site.line_1 %>
+      </p>
+      <p>
+        <%= site.neighborhood %>
+      </p>
+      <p>
+        <%= site.city %>
+      </p>
+      <p>
+        <%= site.state %>
+      </p>
+      <p>
+        <%= site.contact_name %>
+      </p>
+      <p>
+        <%= site.contact_email %>      
+      </p>
+    </li>
+  <% end %>
+</ul>
 
 

@@ -3,8 +3,12 @@ class AuditsController < ApplicationController
 
 
     def show
-
         @audit =Audit.find params[:id]
+
+        @company = @audit.company
+
+        @sites = @company.site.order(created_at: :desc)
+  
     end
 
     def index

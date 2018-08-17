@@ -83,6 +83,7 @@ puts Cowsay.say("Created #{companies.count} companies", :frogs)
 puts Cowsay.say("Created #{sites.count} sites", :frogs)
 
 
+
 20.times do
     actvities = ["Security Audit", "Health Audit", "Technology Audit", "Enviroment Audit"]
     a = Audit.create(

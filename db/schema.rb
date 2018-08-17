@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_16_024458) do
+ActiveRecord::Schema.define(version: 2018_08_16_225505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,9 @@ ActiveRecord::Schema.define(version: 2018_08_16_024458) do
     t.datetime "updated_at", null: false
     t.string "process_number"
     t.string "scope"
+    t.bigint "site_id"
     t.index ["company_id"], name: "index_audits_on_company_id"
+    t.index ["site_id"], name: "index_audits_on_site_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -105,9 +107,9 @@ ActiveRecord::Schema.define(version: 2018_08_16_024458) do
   create_table "teams", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "audit_id"
-    t.boolean "manage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "manage", default: false
     t.index ["audit_id"], name: "index_teams_on_audit_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
@@ -124,6 +126,7 @@ ActiveRecord::Schema.define(version: 2018_08_16_024458) do
   end
 
   add_foreign_key "audits", "companies"
+  add_foreign_key "audits", "sites"
   add_foreign_key "rat_reports", "audits"
   add_foreign_key "sites", "companies"
   add_foreign_key "teams", "audits"
