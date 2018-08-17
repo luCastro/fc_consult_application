@@ -1,5 +1,5 @@
 class Site < ApplicationRecord
     belongs_to :company
     
-    belongs_to :audit
+    has_many :audits, dependent: :destroy
 end

@@ -9,8 +9,8 @@ PASSWORD = "adminLuciana"
 
 RatReport.delete_all
 Team.delete_all
-Site.delete_all
 Audit.delete_all
+Site.delete_all
 Company.delete_all
 User.delete_all
 AdminUser.delete_all
@@ -56,7 +56,7 @@ puts Cowsay.say "Created #{users.count} users", :tux
     )
 
     if c.valid?
-        rand(1...3).times do
+        rand(1...4).times do
             Site.create(
                 line_1: Faker::Address.street_address,
                 line_2: "address continuation",
@@ -83,34 +83,36 @@ puts Cowsay.say("Created #{companies.count} companies", :frogs)
 puts Cowsay.say("Created #{sites.count} sites", :frogs)
 
 
+companies.each do |c|
 
-20.times do
-    actvities = ["Security Audit", "Health Audit", "Technology Audit", "Enviroment Audit"]
-    a = Audit.create(
-        process_number: Faker::Company.french_siren_number,
-        scope: Faker::Company.bs,
-        activity: actvities.sample,
-        company: companies.sample,
-        target: Faker::Company.catch_phrase,
-        criterion: Faker::Company.bs,
-        requirement: Faker::Company.bs,
-        audit_doc: Faker::Company.bs,
-        start_date: Date.today,
-        end_date: Faker::Date.between(2.days.ago, Date.today),
-    )
-    
-    if a.valid?
-        RatReport.create(
-            introduction: Faker::Lorem.paragraph,
-            comment: Faker::Lorem.paragraph,
-            observation: Faker::Lorem.paragraph,
-            improvement: Faker::Lorem.paragraph,
-            conclusion: Faker::Lorem.paragraph,
-            audit: a 
+    rand(1...3).times do
+        actvities = ["Security Audit", "Health Audit", "Technology Audit", "Enviroment Audit"]
+        a = Audit.create(
+            process_number: Faker::Company.french_siren_number,
+            scope: Faker::Company.bs,
+            activity: actvities.sample,
+            company: c,
+            target: Faker::Company.catch_phrase,
+            criterion: Faker::Company.bs,
+            requirement: Faker::Company.bs,
+            audit_doc: Faker::Company.bs,
+            site: c.site.sample,
+            start_date: Date.today,
+            end_date: Faker::Date.between(2.days.ago, Date.today),
         )
+        
+        if a.valid?
+            RatReport.create(
+                introduction: Faker::Lorem.paragraph,
+                comment: Faker::Lorem.paragraph,
+                observation: Faker::Lorem.paragraph,
+                improvement: Faker::Lorem.paragraph,
+                conclusion: Faker::Lorem.paragraph,
+                audit: a 
+            )
+        end
     end
 end
-
 
 audits = Audit.all
 rat_reports = RatReport.all
