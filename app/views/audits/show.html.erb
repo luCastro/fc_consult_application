@@ -26,29 +26,53 @@
   <%= @audit.end_date%>
 </h5>
 
+<h5>
+  <%= @company.name%><br>
+  <%= @company.business_name%><br>
+  <%= @company.cnpj%><br>
+  <%= @company.current_certification%>
+</h5>
+
+
+<h5>
+  <%= @site.line_2%><br>
+  <%= @site.line_3%><br>
+  <%= @site.line_1%><br>
+  <%= @site.neighborhood%><br>
+  <%= @site.city%><br>
+  <%= @site.state%><br>  
+  <%= @site.contact_name%><br>  
+  <%= @site.contact_email%>  
+</h5>
+
 <ul>
   <% @sites.each do |site| %>
-    <li>
-        <p>Adress<p>
-      <p>
-        <%= site.line_1 %>
-      </p>
-      <p>
-        <%= site.neighborhood %>
-      </p>
-      <p>
-        <%= site.city %>
-      </p>
-      <p>
-        <%= site.state %>
-      </p>
-      <p>
-        <%= site.contact_name %>
-      </p>
-      <p>
-        <%= site.contact_email %>      
-      </p>
-    </li>
+
+    <%if site.id != @audit.site.id %>
+      <li>
+          <p>Adress<p>
+        <p>
+          <%= site.line_1 %>
+        </p>
+        <p>
+          <%= site.neighborhood %>
+        </p>
+        <p>
+          <%= site.city %>
+        </p>
+        <p>
+          <%= site.state %>
+        </p>
+        <p>
+          <%= site.contact_name %>
+        </p>
+        <p>
+          <%= site.contact_email %>      
+        </p>
+      </li>
+
+    <%end%>
+    
   <% end %>
 </ul>
 

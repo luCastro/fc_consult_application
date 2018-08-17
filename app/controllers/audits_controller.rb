@@ -6,6 +6,8 @@ class AuditsController < ApplicationController
         @audit =Audit.find params[:id]
 
         @company = @audit.company
+        
+        @site = @audit.site  
 
         @sites = @company.site.order(created_at: :desc)
   
