@@ -15,12 +15,13 @@ class RatReportsController < ApplicationController
             
             redirect_to audit_rat_report_path(@rat_report.audit_id, @rat_report)
         else
-            render "rat_report/show"
+            render :new
         end
     end
 
     def show
         @audit = Audit.find params[:audit_id]
+        @rat_report = RatReport.find params[:id]
     end
 
     def edit
