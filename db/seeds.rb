@@ -101,27 +101,27 @@ companies.each do |c|
             end_date: Faker::Date.between(2.days.ago, Date.today),
         )
         
-        if a.valid?
-            RatReport.create(
-                introduction: Faker::Lorem.paragraph,
-                comment: Faker::Lorem.paragraph,
-                observation: Faker::Lorem.paragraph,
-                improvement: Faker::Lorem.paragraph,
-                conclusion: Faker::Lorem.paragraph,
-                audit: a 
-            )
-        end
+        # if a.valid?
+        #     RatReport.create(
+        #         introduction: Faker::Lorem.paragraph,
+        #         comment: Faker::Lorem.paragraph,
+        #         observation: Faker::Lorem.paragraph,
+        #         improvement: Faker::Lorem.paragraph,
+        #         conclusion: Faker::Lorem.paragraph,
+        #         audit: a 
+        #     )
+        # end
     end
 end
 
 audits = Audit.all
-rat_reports = RatReport.all
+# rat_reports = RatReport.all
 
 puts Cowsay.say("Created #{audits.count} audits", :cow)
-puts Cowsay.say("Created #{rat_reports.count} rat_report", :dog)
+# puts Cowsay.say("Created #{rat_reports.count} rat_report", :dog)
 
 users.each do |user|
-    rand(0...8).times do
+    rand(1...8).times do
         Team.create(
             user: user,
             audit: audits.sample

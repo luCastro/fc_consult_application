@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :audits, only: [:show, :index] do
+  resources :audits, only: [:show, :index, :create, :update] do
 
-    resources :rat_reports, shallow: true, only: [:new, :show, :index, :create, :update]
+    resources :rat_reports, only: [:new, :create, :show, :edit, :update]
 
   end
 
@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   get('/', { to: 'welcome#index', as: 'home' })
 
 end
+
+
 

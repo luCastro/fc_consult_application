@@ -1,5 +1,6 @@
 
-<%= form_for(@rat_report) do |r| %>
+<%= form_for @rat_report, url: audit_rat_reports_path do |f| %>
+
   <% if @rat_report.errors.present? %>
     <p>
       <%= @rat_report.errors.full_messages.join(', ') %>
@@ -7,8 +8,8 @@
   <% end %>
 
   <div>
-    <%= r.label(:introduction) %>
-    <%= r.text_area(:introduction) %>
+    <%= f.label(:introduction) %>
+    <%= f.text_area(:introduction) %>
   </div>
 
   <div>
@@ -34,4 +35,3 @@
   <%= f.submit %>
 
 <% end %>
-
