@@ -13,7 +13,7 @@ class RatReportsController < ApplicationController
 
         if @rat_report.save
             
-            redirect_to audit_rat_report_path(@rat_report)
+            redirect_to rat_report_path(@rat_report)
         else
             render :new
         end
