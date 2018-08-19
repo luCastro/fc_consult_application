@@ -23,11 +23,19 @@ class RatReportsController < ApplicationController
         
         @rat_report = RatReport.find params[:id]
         # @audit = Audit.find params[:id]
-        
+        # @audit = @rat_report.audit_id
+        # @company = @audit.company_id
+        # @site = @audit.site_id
         # @rat_report= RatReport.where(audit_id: @audit)
 
         # render json: @rat_report
-
+        respond_to do |format|
+            format.html
+            format.pdf do 
+                render pdf: 'report',
+                template: 'rat_reports/pdf.html.erb'
+            end
+        end
     end
 
     def edit

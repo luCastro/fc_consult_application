@@ -18,4 +18,6 @@
     <p><%= @rat_report.conclusion%></p>
 </div>
 
-  <%= link_to('Edit Report', edit_rat_report_path(@rat_report.id))%>
+<%= link_to('Edit Report', edit_rat_report_path(@rat_report.id))%>
+
+<%= link_to 'Create PDF document', rat_report_path(@rat_report, :format => :pdf) %>

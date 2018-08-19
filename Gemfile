@@ -31,6 +31,8 @@ gem 'cancancan'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 
 gem 'inherited_resources'
