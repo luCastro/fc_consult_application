@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :audits, only: [:show, :index, :create, :update] do
 
-    resources :rat_reports, only: [:new, :create, :show, :edit, :update]
+    resources :rat_reports, shallow: true, only: [:new, :create, :show, :edit, :update]
 
   end
 

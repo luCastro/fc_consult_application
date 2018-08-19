@@ -13,25 +13,30 @@ class RatReportsController < ApplicationController
 
         if @rat_report.save
             
-            redirect_to audit_rat_report_path(@rat_report.audit_id, @rat_report)
+            redirect_to audit_rat_report_path(@rat_report)
         else
             render :new
         end
     end
 
     def show
-        @audit = Audit.find params[:audit_id]
+        
         @rat_report = RatReport.find params[:id]
+        # @audit = Audit.find params[:id]
+        
+        # @rat_report= RatReport.where(audit_id: @audit)
+
+        # render json: @rat_report
+
     end
 
     def edit
-        @audit = Audit.find params[:id]
-        @rat_report = @audit.rat_report
+        @rat_report = RatReport.find params[:id]
     end
 
     def update
-        @audit = Audit.find params[:id]
-        @rat_report = @audit.rat_report
+        # @audit = Audit.find params[:id]
+        @rat_report = RatReport.find params[:id]
         # @rat_report = RatReport.find params[:id]
 
         if @rat_report.update(rat_report_params)
@@ -49,3 +54,5 @@ class RatReportsController < ApplicationController
     end
 
 end
+
+

@@ -75,6 +75,16 @@
     
   <% end %>
 </ul>
+ 
+
+<% if (@rat_report.empty?)%>
+
+  <%= link_to('New Report', new_audit_rat_report_path(@audit.id)) %>
+
+<%else%>
+
+  <%= link_to('Show Report', rat_report_path(@rat_report[0]))%>
+
+<%end%>
 
 
-<%= link_to('New Report', new_audit_rat_report_path(@audit.id)) %>

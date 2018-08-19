@@ -4,9 +4,13 @@ class AuditsController < ApplicationController
 
     def show
         @audit =Audit.find params[:id]
+    
+        @rat_report= RatReport.where(audit_id: @audit)
 
         @company = @audit.company
-        
+    
+        # render json: @rat_report
+
         @site = @audit.site  
 
         @sites = @company.site.order(created_at: :desc)
