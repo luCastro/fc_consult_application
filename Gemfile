@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'materialize-sass', '~> 1.0.0.rc2'
+gem "simple_calendar", "~> 2.0"
 gem 'cowsay'
 gem 'faker'
 gem 'cancancan'

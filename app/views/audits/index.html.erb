@@ -1,3 +1,21 @@
+
+  
+  
+<div>  
+  <%= month_calendar events: @audits do |date, audits| %>
+    
+    <%= date %>
+
+    <% audits.each do |audit| %>
+      <div>
+        <%= audit.activity %>
+        <%=link_to audit.activity, audit_path(audit) %>
+      </div>
+
+    <% end %>
+  <% end %>
+</div>
+
 <ul>
   <% @audits.each do |audit| %>
     <li>
@@ -17,3 +35,8 @@
     </li>
   <% end %>
 </ul>
+
+
+
+
+
