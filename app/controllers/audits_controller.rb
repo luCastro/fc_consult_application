@@ -3,8 +3,10 @@ class AuditsController < ApplicationController
 
 
     def show
-        @audit =Audit.find params[:id]
-    
+        @audit= Audit.find params[:id]
+        
+        @teams = Team.where(audit_id: @audit)
+
         @rat_report= RatReport.where(audit_id: @audit)
 
         @company = @audit.company

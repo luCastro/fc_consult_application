@@ -10,37 +10,10 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-    <div class="card-panel teal lighten-2">
-      <nav>
-        <%= link_to 'Home', home_path %>
-        |
-        <% if user_signed_in? %>
-          <%= link_to 'User Profile', user_path(current_user.id) %>
-          |
-          <%= link_to 'Your audits', audits_path %>
-          |
-          <span>Hi, <%= current_user.first_name %></span>
-          |
-          <%= link_to(
-            'Sign Out',
-            session_path,
-            method: :delete
-          ) %>
-        <% else %>
-          <%= link_to('Sign In', new_session_path) %>
-        <% end %>
-      </nav>
 
-      <% flash.each do |type, message| %>
-        <div class="flash flash-<%= type %>">
-          <%= message %>
-        </div>
-      <% end %>
 
       <%= yield %>
-    </div>
-  </body>
+
 </html>
 
 

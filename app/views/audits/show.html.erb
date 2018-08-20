@@ -23,7 +23,7 @@
   <%= @audit.start_time%>
 </h5>
 <h5>
-  <%= @audit.end_date%>
+  <%= @audit.end_time%>
 </h5>
 
 <h5>
@@ -44,6 +44,13 @@
   <%= @site.contact_name%><br>  
   <%= @site.contact_email%>  
 </h5>
+
+<div>
+  <% @teams.each do |team| %>
+   <h3><%= team.user.first_name %></h3>
+  <%end%>
+</div>
+
 
 <ul>
   <% @sites.each do |site| %>
