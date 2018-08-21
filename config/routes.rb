@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   end
 
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :delete, :destroy]
 
   get('/', { to: 'welcome#index', as: 'home' })
 

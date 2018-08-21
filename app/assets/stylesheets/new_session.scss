@@ -1,5 +1,5 @@
 
-.background {
+.background-session {
     // background-color: white;
     // background-color: rgba($color: #ffffff, $alpha: 0.5);
     background-image: url("fc_background_op.png");
@@ -44,4 +44,8 @@
 
 .fc-grey {
     color: #605E5E;
+}
+
+.card .card-content {
+    padding-top: 10px;
 }

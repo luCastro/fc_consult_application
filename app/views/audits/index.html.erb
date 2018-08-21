@@ -1,42 +1,58 @@
+<body style="overflow: hidden">
+  <header>
+        <nav class="nav-wrapper teal darken-1">
+            <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
+            <div>
+                <p class="brand-logo center white-text nav-text-logo">Your Audits - Calendar </p>
+            </div>
+        </nav>
+  </header>   
+  <div>
+      <ul id="slide-out" class="sidenav sidenav-fixed white">
+          <li>
+              <div>
+                  <img src="/assets/fc_consult_logo.png" class="img-background" alt="">
+              </div>
+          </li>
+          <li>
+              <div class="user-view">
+                  <div class="background">
+                      <img src="/assets/fc_side_background.jpg" class="img-background">
+                  </div>
+                  <div>
+                      <a href="#user"><img class="circle" src="/assets/francisco_photo.jpg"></a>
+                      <a href="#name"><span class="white-text name">John Doe</span></a>
+                      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                  </div>
+              </div>
+          </li>
+          <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+          <li><a href="#!">Second Link</a></li>
+          <li><div class="divider"></div></li>
+          <li><a class="subheader">Subheader</a></li>
+          <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+      </ul>    
+  </div>
+  <main>
+    <div class="margin-cale">  
+      <%= month_calendar events: @audits do |date, audits| %>
+        
+        <%= date %>
 
-  
-  
-<div>  
-  <%= month_calendar events: @audits do |date, audits| %>
-    
-    <%= date %>
+        <% audits.each do |audit| %>
+          <div>
+            <%= audit.activity %>
+            <%=link_to audit.activity, audit_path(audit) %>
+          </div>
 
-    <% audits.each do |audit| %>
-      <div>
-        <%= audit.activity %>
-        <%=link_to audit.activity, audit_path(audit) %>
-      </div>
+        <% end %>
+      <% end %>
+    </div>    
+  </main>
+      
 
-    <% end %>
-  <% end %>
-</div>
-
-<ul>
-  <% @audits.each do |audit| %>
-    <li>
-      <%= link_to(
-        audit.activity,
-        audit_path(audit),
-        class: "awesome-tooltip",
-      ) %>
-      <br />
-      <%= audit_path(audit) %>
-      <br>
-      <%= audit_path(audit.id) %>
-      <br>
-      <small>
-        Posted <%= time_ago_in_words(audit.created_at) %> ago
-      </small>
-    </li>
-  <% end %>
-</ul>
-
-
-
+  </div>
+</body>
+          
 
 

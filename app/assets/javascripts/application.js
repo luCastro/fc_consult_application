@@ -19,9 +19,12 @@
 //= require_tree .
 
 
+$(document).ready(function(){
 
+    console.log( "ready!" );
+    $('.sidenav').sidenav();
 
-
+}); 
 
 
 

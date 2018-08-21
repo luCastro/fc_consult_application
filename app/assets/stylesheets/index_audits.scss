@@ -1,0 +1,36 @@
+
+
+.margin-cale {
+    margin-left: 2em;
+    margin-top: 2em;
+    margin-right: 2em;
+}
+
+.all-view {
+    height: 100vw;
+}
+
+main {
+    padding-left: 300px;
+    }
+
+@media only screen and (max-width : 992px) {
+    main {
+        padding-left: 0;
+    }
+}
+
+.img-background {
+    width: 299px;
+}
+
+nav {
+    height: 148px;
+}
+
+nav .brand-logo.center {
+    margin:30px 0 40px 0;
+    left: 60%;
+}
+
+
