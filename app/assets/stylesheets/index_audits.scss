@@ -1,9 +1,13 @@
-
-
+a, a:link, a:visited {
+    text-decoration: none;
+}
 .margin-cale {
-    margin-left: 2em;
-    margin-top: 2em;
-    margin-right: 2em;
+    margin-left: 20px;
+    margin-top: 28px;
+    margin-right: 20px;
+    -webkit-box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.75);
 }
 
 .all-view {
@@ -25,7 +29,7 @@ main {
 }
 
 nav {
-    height: 148px;
+    height: 100px;
 }
 
 nav .brand-logo.center {
@@ -33,4 +37,34 @@ nav .brand-logo.center {
     left: 60%;
 }
 
+.sidenav .user-view .name,
+.sidenav .user-view .email {
+    font-size: 18px;
+}
 
+
+.user-data {
+    margin-top: 10px;
+}
+
+.sidenav .user-view .circle {
+    height: 100px;
+    width: 100px;
+}
+
+.sidenav li {
+    float: none;
+    line-height: 0px;
+}
+
+.calendar-title {
+    font-size: 25px;
+}
+
+.calendar-heading {
+    height: 50px;
+}
+
+.simple-calendar .day {
+    height: 75px;
+}

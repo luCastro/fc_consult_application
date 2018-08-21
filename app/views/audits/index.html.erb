@@ -15,29 +15,47 @@
               </div>
           </li>
           <li>
-              <div class="user-view">
+              <div class="user-view" style="height: 250px;">
                   <div class="background">
                       <img src="/assets/fc_side_background.jpg" class="img-background">
                   </div>
                   <div>
-                      <a href="#user"><img class="circle" src="/assets/francisco_photo.jpg"></a>
-                      <a href="#name"><span class="white-text name">John Doe</span></a>
-                      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-                  </div>
+                      <img class="circle" src="/assets/luciana_photo.jpg">
+                        <div class="user-data">
+                            <div>
+                                <span class="white-text name user-text">
+                                    <%= current_user.full_name%>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="white-text email" style="margin-top:16px;">
+                                    <%= current_user.email%>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
               </div>
           </li>
-          <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-          <li><a href="#!">Second Link</a></li>
+          <li>
+            
+          </li>
+          <li>
+            <%= link_to 'User Profile', user_path(current_user.id)%>
+          </li>
+          <li>
+            <%= link_to('Sign Out', session_path, method: :delete, class: "nav-text") %>
+          </li>
           <li><div class="divider"></div></li>
-          <li><a class="subheader">Subheader</a></li>
-          <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+          <li><a>Personal Notes</a></li>
+          <li><a>Team Messages</a></li>
+          <li><a>Audits</a></li>
       </ul>    
   </div>
   <main>
     <div class="margin-cale">  
       <%= month_calendar events: @audits do |date, audits| %>
         
-        <%= date %>
+        <%= date.day%>
 
         <% audits.each do |audit| %>
           <div>
