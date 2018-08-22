@@ -84,11 +84,31 @@
     <div class="col l3">
         <div class="card-panel white">
           <div class="audit">
-            <% if (@rat_report.empty?)%>
-              <%= link_to('New Report', new_audit_rat_report_path(@audit.id), class: "btn") %>
-            <%else%>
-              <%= link_to('Show Report', rat_report_path(@rat_report[0]), class: "btn")%>
-            <%end%>            
+            <div>
+              <%= form_for [@audit, @evidence] do |f| %>
+                <div>
+                    <%= f.label :title %>
+                    <%= f.text_field :title %> 
+                </div>    
+                <div>
+                    <%= f.label :doc %>
+                    <%= f.file_field :doc %>
+                </div>
+                <%= f.submit%>
+              <%end%>
+            </div>
+            <div>
+              <% @evidences.each do |e| %>
+               <%= link_to e.title, e.doc%>
+              <% end%>
+            </div>
+            <div>
+              <% if (@rat_report.empty?)%>
+                <%= link_to('New Report', new_audit_rat_report_path(@audit.id), class: "btn") %>
+              <%else%>
+                <%= link_to('Show Report', rat_report_path(@rat_report[0]), class: "btn")%>
+              <%end%> 
+            </div>                
           </div>
         </div>
     </div>

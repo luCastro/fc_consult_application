@@ -1,7 +1,6 @@
 class AuditsController < ApplicationController
     before_action :authenticate_user!, only: [:show, :index]
 
-
     def show
         @audit= Audit.find params[:id]
         
@@ -10,8 +9,10 @@ class AuditsController < ApplicationController
         @rat_report= RatReport.where(audit_id: @audit)
 
         @company = @audit.company
-    
-        # render json: @rat_report
+        
+        @evidence = Evidence.new
+
+        @evidences = @audit.evidences.order(created_at: :desc)
 
         @site = @audit.site  
 
@@ -24,10 +25,5 @@ class AuditsController < ApplicationController
         @audits = current_user.teamed_audits 
     end
 
-    # private
-    # def audits_params
-    #     params.require(.audit).permit(:activity, :target, :criterion, :requirement,
-    #          :duration, :audit_doc, :start_date, :end_date, :company_id )
-    # end
 end
 
