@@ -10,8 +10,67 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-      <%= yield %>
 
+
+  <body style="overflow: hidden">
+    <header>
+          <nav class="nav-wrapper teal darken-1">
+              <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
+              <div>
+                  <p class="brand-logo center white-text nav-text-logo">Your Audits - Calendar </p>
+              </div>
+          </nav>
+    </header>   
+    <div>
+        <ul id="slide-out" class="sidenav sidenav-fixed white">
+            <li>
+                <div>
+                    <img src="/assets/fc_consult_logo.png" class="img-background" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="user-view" style="height: 250px;">
+                    <div class="background">
+                        <img src="/assets/fc_side_background.jpg" class="img-background">
+                    </div>
+                    <div>
+                        <img class="circle" src="/assets/luciana_photo.jpg">
+                          <div class="user-data">
+                            <% if current_user.present? %>
+                              <div>
+                                  <span class="white-text name user-text">   
+                                    <%= current_user.full_name%>
+                                  </span>
+                              </div>
+                              <div>
+                                  <span class="white-text email" style="margin-top:16px;">
+                                      <%= current_user.email%>
+                                  </span>
+                              </div>
+                            <% end %>
+                          </div>
+                      </div>
+                </div>
+            </li>
+            <li>
+              
+            </li>
+            <% if current_user.present? %>
+              <li>
+                <%= link_to 'User Profile', user_path(current_user.id)%>
+              </li>
+              <li>
+                <%= link_to('Sign Out', session_path, method: :delete, class: "nav-text") %>
+              </li>
+            <% end %>
+            <li><div class="divider"></div></li>
+            <li><a>Personal Notes</a></li>
+            <li><a>Team Messages</a></li>
+            <li><a>Audits</a></li>
+        </ul>    
+    </div>
+    <%= yield %>
+  <body>
 </html>
 
 

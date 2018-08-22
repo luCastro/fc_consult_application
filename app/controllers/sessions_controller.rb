@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
-   
+    layout "session_application.html.erb"
+
     def new
+
     end
 
     def create
