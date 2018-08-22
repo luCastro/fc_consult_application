@@ -1,0 +1,27 @@
+
+// .audit-data {
+//     border: 2px solid black;
+// }
+.audit {
+    border: 1px solid rgb(216, 210, 210);
+    padding: 10px;
+    
+}
+
+.information {
+    font-size: 15px;
+}
+
+.title-audit {
+    font-size: 20px; 
+    margin-bottom:15px;
+    background-color: rgba($color: #80cbc4, $alpha: 0.2)
+}
+
+.information p {
+    margin-bottom:2px; 
+}
+
+.divider {
+    margin: 5px;
+}
