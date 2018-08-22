@@ -1,6 +1,15 @@
-<main>
+<header>
+      <nav class="nav-wrapper teal darken-1" style="position: fixed;">
+          <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
+          <div>
+              <p class="brand-logo center white-text nav-text-logo"> Audit in <%= @company.name%> </p>
+          </div>
+      </nav>
+</header> 
+
+<main style="padding-top: 120px;">
   <div class= "row audit-data">
-    <div class="col l9">
+    <div class="col l8">
       <div class="card-panel white">
         <div class="card-title audit">
           <p class="title-audit">Audit</p>
@@ -81,36 +90,41 @@
         </div>
       </div>
     </div>
-    <div class="col l3">
+    <div class="col l4">
         <div class="card-panel white">
           <div class="audit">
+            <p class="title-audit">Audit Evidences</p>
             <div>
               <%= form_for [@audit, @evidence] do |f| %>
                 <div>
-                    <%= f.label :title %>
+                    <%= f.label :title, class: "doc-label"%>
                     <%= f.text_field :title %> 
                 </div>    
                 <div>
-                    <%= f.label :doc %>
-                    <%= f.file_field :doc %>
+                    <%= f.label :doc, "Documents", class: "doc-label"%>
+                    <%= f.file_field :doc, class: "doc-field" %>
                 </div>
-                <%= f.submit%>
+
+                  <%= f.submit "Upload", class:"btn waves-effect waves-light teal darken-1"%>
               <%end%>
             </div>
-            <div>
-              <% @evidences.each do |e| %>
-               <%= link_to e.title, e.doc%>
+            <div style="margin-top:25px;">
+              <% @evidences.each do |e| %>    
+                <p>
+                  <span><i class="material-icons" style="color: #4c4b4b;">assignment</i></span>
+                  <%= link_to e.title, e.doc, class: "evidences"%>
+                </p>
               <% end%>
             </div>
-            <div>
-              <% if (@rat_report.empty?)%>
-                <%= link_to('New Report', new_audit_rat_report_path(@audit.id), class: "btn") %>
-              <%else%>
-                <%= link_to('Show Report', rat_report_path(@rat_report[0]), class: "btn")%>
-              <%end%> 
-            </div>                
           </div>
         </div>
+          <div>
+            <% if (@rat_report.empty?)%>
+              <%= link_to('New Report', new_audit_rat_report_path(@audit.id), class: "btn waves-effect waves-light teal darken-1") %>
+            <%else%>
+              <%= link_to('Show Report', rat_report_path(@rat_report[0]), class:"btn waves-effect waves-light teal darken-1")%>
+            <%end%> 
+          </div>                
     </div>
   </div>
 </main>

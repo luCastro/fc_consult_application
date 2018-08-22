@@ -25,3 +25,36 @@
 .divider {
     margin: 5px;
 }
+
+.doc-label {
+    font-size: 18px;
+}
+
+.doc-field {
+    height: 50px;
+}
+
+.button-upload > input
+{
+   display: none;
+}
+
+.evidences {
+    font-size: 15px;
+    color: #4c4b4b;
+}
+
+.evidences a, a:link, a:visited {
+    text-decoration: underline;
+    color: #4c4b4b;
+}
+
+
+.evidences a, a:hover {
+    color: #5c7ff1;
+}
+
+
+a:link, a:visited {
+    text-decoration: none;
+}
