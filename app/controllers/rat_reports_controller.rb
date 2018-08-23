@@ -32,7 +32,7 @@ class RatReportsController < ApplicationController
         respond_to do |format|
             format.html
             format.pdf do 
-                render pdf: 'report',
+                render pdf: 'pdf',
                 template: 'rat_reports/pdf.html.erb'
             end
         end
