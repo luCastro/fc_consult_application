@@ -37,8 +37,8 @@ class RatReportsController < ApplicationController
                 page_size: 'Letter',
                 zoom: 1.3,
                 margin: {
-                    left: 20,
-                    right: 0
+                    left: 10,
+                    right: 10
                 }
             end
         end

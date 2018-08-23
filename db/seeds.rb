@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-PASSWORD = "adminLuciana"
+PASSWORD = "123456"
 
 Evidence.delete_all
 RatReport.delete_all
@@ -28,7 +28,7 @@ super_user = User.create(
     # admin: true
   )
 
-10.times do
+3.times do
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
 
@@ -45,84 +45,206 @@ users = User.all
 
 puts Cowsay.say "Created #{users.count} users", :tux
 
-20.times do
-    first_name = Faker::Name.female_first_name
-    company_name = Faker::Company.name
     
     c = Company.create(
-      name: company_name,
-      business_name: company_name,
-      cnpj: Faker::Company.french_siren_number,
-      current_certification: Faker::Company.catch_phrase
+      name: "JPCM",
+      business_name: "JCPM Participações e Empreendimentos S.A",
+      cnpj: "11.483.096/0001-02",
+      current_certification: "ISO 9001, ISO 14001 e OHSAS 18001"
     )
-
     if c.valid?
-        rand(1...4).times do
+        # rand(2).times do
+        first_name = Faker::Name.female_first_name
             Site.create(
-                line_1: Faker::Address.street_address,
-                line_2: "address continuation",
-                line_3: "12345",            
-                neighborhood: Faker::Address.community,
-                city: Faker::Address.city,
-                postal_code:Faker::Address.zip,
-                telephone:Faker::Address.postcode,
+                line_1: "Avenida Engenheiro Antônio de Góes, 60,",
+                line_2: "sala 2001,",
+                line_3: "sub-unidade 01",            
+                neighborhood: "Pina",
+                city: "Recife",
+                postal_code:"5000-000",
+                telephone:"9340-09-09",
                 contact_name: first_name,
-                contact_email:"#{first_name.downcase}@#{company_name.downcase}.com",
+                contact_email:"com",
                 # longitude:
                 # latidude:
                 company: c
             )
-        end
-    end
-end
 
-companies = Company.all
-sites = Site.all
+            Site.create(
+                line_1: "Avenida Engenheiro Antônio de Góes, 60,",
+                line_2: "sala 2001,",
+                line_3: "sub-unidade 01",            
+                neighborhood: "Pina",
+                city: "Recife",
+                postal_code:"5000-000",
+                telephone:"9340-09-09",
+                contact_name: first_name,
+                contact_email:"com",
+                # longitude:
+                # latidude:
+                company: c)
 
 
-puts Cowsay.say("Created #{companies.count} companies", :frogs)
-puts Cowsay.say("Created #{sites.count} sites", :frogs)
 
-
-companies.each do |c|
-
-    rand(1...3).times do
-        actvities = ["Security Audit", "Health Audit", "Technology Audit", "Enviroment Audit"]
-        a = Audit.create(
+            rand(1...8).times do
+            actvities = ["Security Audit", "Health Audit", "Technology Audit", "Enviroment Audit"]
+            a = Audit.create(
             process_number: Faker::Company.french_siren_number,
-            scope: Faker::Company.bs,
+            scope: "Distribution and Commerce",
             activity: actvities.sample,
             company: c,
-            target: Faker::Company.catch_phrase,
-            criterion: Faker::Company.bs,
-            requirement: Faker::Company.bs,
-            audit_doc: Faker::Company.bs,
+            target: "
+            Verify that the certified management system continues to meet the requirements",
+            criterion: "ABNT NBR ISO 9001:2008",
+            requirement: "4.2, 5.6, 7.1, 7.5, 8.2, 8.3, 8.5",
+            audit_doc: "PG-02 PG-15 PE-004 Integrated System",
             site: c.site.sample,
-            start_time: Date.today,
-            end_time: Faker::Date.between(2.days.ago, Date.today),
+            start_time: Faker::Date.between(30.days.ago, Time.now + 20.days)
         )
         
-        # if a.valid?
-        #     RatReport.create(
-        #         introduction: Faker::Lorem.paragraph,
-        #         comment: Faker::Lorem.paragraph,
-        #         observation: Faker::Lorem.paragraph,
-        #         improvement: Faker::Lorem.paragraph,
-        #         conclusion: Faker::Lorem.paragraph,
-        #         audit: a 
-        #     )
-        # end
+        end           
     end
-end
 
-audits = Audit.all
-# rat_reports = RatReport.all
 
-puts Cowsay.say("Created #{audits.count} audits", :cow)
-# puts Cowsay.say("Created #{rat_reports.count} rat_report", :dog)
+
+    
+e = Company.create(
+    name: "CTR-PE",
+    business_name: "Central de Tratamento de Residuos LTDA",
+    cnpj: "07.534.580/0001-46",
+    current_certification: "ISO 14001"
+  )
+
+  if e.valid?
+      # rand(2).times do
+      first_name = Faker::Name.female_first_name
+          Site.create(
+              line_1: "Rodovia BR 101 Norte,",
+              line_2: "sala 2001,",
+              line_3: "s/n km 28,5",            
+              neighborhood: "Igarassu",
+              city: "Zona Rural Igarassu",
+              postal_code:"53640-000",
+              telephone:"(81) 4121.0230",
+              contact_name: first_name,
+              contact_email:"sac@ctrpe.com.br",
+              # longitude:
+              # latidude:
+              company: e
+          )
+
+          first_name = Faker::Name.female_first_name
+          Site.create(
+              line_1: "Rodovia BR 101 Norte,",
+              line_2: "sala 2001,",
+              line_3: "s/n km 28,5",            
+              neighborhood: "Igarassu",
+              city: "Zona Rural Igarassu",
+              postal_code:"53640-000",
+              telephone:"(81) 4121.0230",
+              contact_name: first_name,
+              contact_email:"sac@ctrpe.com.br",
+              # longitude:
+              # latidude:
+              company: e
+          )
+
+     rand(1...8).times do
+         actvities = ["Security Audit", "Health Audit", "Technology Audit", "Enviroment Audit"]
+         g = Audit.create(
+             process_number: Faker::Company.french_siren_number,
+             scope: "Distribution and Commerce",
+             activity: actvities.sample,
+             company: e,
+             target: "
+             Verify that the certified management system continues to meet the requirements",
+             criterion: "ABNT NBR ISO 9001:2008",
+             requirement: "4.2, 5.6, 7.1, 7.5, 8.2, 8.3, 8.5",
+             audit_doc: "PG-02 PG-15 PE-004 Integrated System",
+             site: e.site.sample,
+             start_time: Faker::Date.between(30.days.ago, Time.now + 20.days)
+         )
+     end
+  end
+# end
+
+    
+ d = Company.create(
+     name: "Solunni",
+     business_name: "Solunni Servicos Especializados",
+     cnpj: "05.419.785/0001-55",
+     current_certification: "ISO 9001, ISO 14001 e OHSAS 18001"
+   )
+   if d.valid?
+       # rand(2).times do
+       first_name = Faker::Name.female_first_name
+           Site.create(
+               line_1: "R Feliciano Jose De Farias,",
+               line_2: "133",
+               line_3: "01",            
+               neighborhood: "Boa Viagem",
+               city: "Recife",
+               postal_code:"5100-000",
+               telephone:"(81)3035-6682",
+               contact_name: first_name,
+               contact_email:"kjkjklj@kjkjk.com",
+               # longitude:
+               # latidude:
+               company: d
+           )
+       # end
+
+       Site.create(
+        line_1: "R Feliciano Jose De Farias,",
+        line_2: "133",
+        line_3: "01",            
+        neighborhood: "Boa Viagem",
+        city: "Recife",
+        postal_code:"5100-000",
+        telephone:"(81)3035-6682",
+        contact_name: first_name,
+        contact_email:"kjkjklj@kjkjk.com",
+        # longitude:
+        # latidude:
+        company: d
+    )
+
+        rand(1...8).times do
+         actvities = ["Security Audit", "Health Audit", "Technology Audit", "Enviroment Audit"]
+         b = Audit.create(
+             process_number: Faker::Company.french_siren_number,
+             scope: "Distribution and Commerce",
+             activity: actvities.sample,
+             company: d,
+             target: "
+             Verify that the certified management system continues to meet the requirements",
+             criterion: "ABNT NBR ISO 9001:2008",
+             requirement: "4.2, 5.6, 7.1, 7.5, 8.2, 8.3, 8.5",
+             audit_doc: "PG-02 PG-15 PE-004 Integrated System",
+             site: d.site.sample,
+             start_time: Faker::Date.between(30.days.ago, Time.now + 20.days)
+            
+         )       
+     end
+  end
+# # end
+
+
+ 
+
+
+
+
+
+
+ audits = Audit.all
+# # rat_reports = RatReport.all
+
+# puts Cowsay.say("Created #{audits.count} audits", :cow)
+# # puts Cowsay.say("Created #{rat_reports.count} rat_report", :dog)
 
 users.each do |user|
-    rand(1...8).times do
+        6.times do
         Team.create(
             user: user,
             audit: audits.sample
@@ -130,6 +252,6 @@ users.each do |user|
     end
 end
 
-teams = Team.all
+# teams = Team.all
 
-puts Cowsay.say("Created #{teams.count} teams", :ghostbusters)
+# puts Cowsay.say("Created #{teams.count} teams", :ghostbusters)
