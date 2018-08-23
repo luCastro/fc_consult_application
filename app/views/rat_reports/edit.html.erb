@@ -1,38 +1,68 @@
-<h1>Edit RAT report</h1>
 
-<%= form_for @rat_report do |f| %>
 
-  <% if @rat_report.errors.present? %>
-    <p>
-      <%= @rat_report.errors.full_messages.join(', ') %>
-    </p>
-  <% end %>
+<header>
+      <nav class="nav-wrapper teal darken-1" style="position: fixed;">
+          <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
+          <div>
+              <p class="brand-logo center white-text nav-text-logo">Edit - Technical Activity Report</p>
+          </div>
+      </nav>
+</header> 
 
-  <div>
-    <%= f.label(:introduction) %>
-    <%= f.text_area(:introduction) %>
-  </div>
+<main style="padding-top: 120px;">
+  <div class= "row audit-data">
+      <div class="col l12">
+        <div class="card-panel white">
+          <div class="card-title audit">
+          
+            <%= form_for @rat_report do |f| %>
 
-  <div>
-    <%= f.label(:comment) %>
-    <%= f.text_area(:comment) %>
-  </div>
-
-  <div>
-    <%= f.label(:observation) %>
-    <%= f.text_area(:observation) %>
-  </div>
-
-  <div>
-    <%= f.label(:improvement) %>
-    <%= f.text_area(:improvement) %>
-  </div>
-
-  <div>
-    <%= f.label(:conclusion) %>
-    <%= f.text_area(:conclusion) %>
-  </div>
-  
-  <%= f.submit %>
-
-<% end %>
+              <% if @rat_report.errors.present? %>
+                <p>
+                  <%= @rat_report.errors.full_messages.join(', ') %>
+                </p>
+              <% end %>
+          
+              <div>
+                <div class="title-audit" >
+                  <label style="font-size: 20px;" for="rat_report_introduction">Introduction:</label>
+                </div>
+                <%= f.text_area :introduction, class:"materialize-textarea" %>
+              </div>
+          
+              <div>
+                <div class="title-audit" >
+                  <label style="font-size: 20px;" for="rat_report_comment">Comment: </label>
+                </div>
+                <%= f.text_area(:comment, class:"materialize-textarea") %>
+              </div>
+          
+              <div>
+                <div class="title-audit" >
+                  <label style="font-size: 20px;" for="rat_report_observation">Observation:</label>
+                </div>
+                <%= f.text_area(:observation, class:"materialize-textarea") %>
+              </div>
+          
+              <div>
+                <div class="title-audit" >
+                  <label style="font-size: 20px;" for="rat_report_improvement">Improvement:</label>
+                </div>
+                <%= f.text_area(:improvement, class:"materialize-textarea") %>
+              </div>
+          
+              <div>
+                <div class="title-audit" >
+                  <label style="font-size: 20px;" for="rat_report_conclusion">Conclusion:</label>
+                </div>
+                <%= f.text_area(:conclusion, class:"materialize-textarea") %>
+              </div>
+              
+              <input class= "btn waves-effect waves-light teal darken-1" type="submit" name="commit" value="Create Rat report" data-disable-with="Create Rat report">
+        
+            <% end %>
+          </div>  
+        </div>
+      </div>
+    </div> 
+</main>

@@ -1,26 +1,93 @@
+<header>
+      <nav class="nav-wrapper teal darken-1" style="position: fixed;">
+          <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
+          <div>
+              <p class="brand-logo center white-text nav-text-logo"> Technical Activity Report</p>
+          </div>
+      </nav>
+</header> 
+
+
 <main>
-<h2> RAT report</h2>
+    <div class= "row audit-data" style="padding-top: 120px;">
+        <div class="col l12">
+            <div class="card-panel white">
+                <div class="card-title audit">                
+                    <p class="title-audit">Audit Information</p>
+                        <div class="information">
+                            <div class="row">
+                                <div class="col l8">
+                                    <p><span>Activity:</span><%= @rat_report.audit.activity%></p>
+                                </div>
+                                <div class="col l4">
+                                    <p><span>Process Number:</span><%= @rat_report.audit.process_number%></p>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="row">
+                                <div class="col l4">
+                                    <p><span>Start Date:</span><%= @rat_report.audit.start_time%></p>
+                                </div>
+                                <div class="col l4">
+                                    <p><span>End Date:</span><%= @rat_report.audit.end_time%></p>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <% business_name = @rat_report.audit.company.business_name %>
+                            <p style="font-size: 25px;"><%= business_name.upcase!%></p>
+                            <p><span>CNPJ:</span><%= @rat_report.audit.company.cnpj%></p>            
+                            <p><span>Audit Adress</span></p>
+                            <p>Branch in <%= @rat_report.audit.site.city%></p>
+                            <p><%= @rat_report.audit.site.line_1%></p>
+                            <p><%= @rat_report.audit.site.line_2%></p>
+                            <p><span>Neighborhood:</span> <%= @rat_report.audit.site.neighborhood%></p>
+                            <p><span>City:</span><%= @rat_report.audit.site.city%></p>
+                            <p><span>State:</span> <%= @rat_report.audit.site.state%></p>
+                            <p><span>Contact Name:</span> <%= @rat_report.audit.site.contact_name%></p>
+                            <p><span>Contact email:</span> <%= @rat_report.audit.site.contact_email%></p>   
+                            <div class="divider"></div> 
+                        </div>
 
-<div>
-        <p><%= @rat_report.audit.company.name%></p>
-    <p>Introduction:</p>
-    <p><%= @rat_report.introduction%></p>
 
-    <p>Comment:</p>
-    <p><%= @rat_report.comment%></p>
 
-    <p>Observation:</p>
-    <p><%= @rat_report.observation%></p>
-    
-    <p>Improvement:</p>
-    <p><%= @rat_report.improvement%></p>
 
-    <p>Conclusion</p>
-    <p><%= @rat_report.conclusion%></p>
-</div>
 
-<%= link_to('Edit Report', edit_rat_report_path(@rat_report.id))%>
 
-<%= link_to 'Create PDF document', rat_report_path(@rat_report, :format => :pdf) %>
+                    
+                            
 
+
+
+
+
+
+
+                    <div>
+
+
+
+                    <p><%= @rat_report.audit.company.name%></p>
+                    <p>Introduction:</p>
+                    <p><%= @rat_report.introduction%></p>
+                
+                    <p>Comment:</p>
+                    <p><%= @rat_report.comment%></p>
+                
+                    <p>Observation:</p>
+                    <p><%= @rat_report.observation%></p>
+                    
+                    <p>Improvement:</p>
+                    <p><%= @rat_report.improvement%></p>
+                
+                    <p>Conclusion</p>
+                    <p><%= @rat_report.conclusion%></p>
+                </div>
+                
+                <%= link_to('Edit Report', edit_rat_report_path(@rat_report.id))%>
+                
+                <%= link_to 'Create PDF document', rat_report_path(@rat_report, :format => :pdf) %>
+                </div>
+             </div>
+        </div>
+    </div>
 </main>

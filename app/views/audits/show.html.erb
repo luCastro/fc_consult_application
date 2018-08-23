@@ -2,7 +2,7 @@
       <nav class="nav-wrapper teal darken-1" style="position: fixed;">
           <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
           <div>
-              <p class="brand-logo center white-text nav-text-logo"> Audit in <%= @company.name%> </p>
+              <p class="brand-logo center white-text nav-text-logo"> Audit Information </p>
           </div>
       </nav>
 </header> 
@@ -19,28 +19,28 @@
           </div>
           <p class="title-audit">Company</p>
           <div class="information">
-            <p>Business Name: <%= @company.business_name%></p>
-            <p>CNPJ: <%= @company.cnpj%></p>            
-            <p>Audit Adress</p>
-            <p>Branch in <%= @site.city%></p>
-            <p><%= @site.line_1%></p>
-            <p><%= @site.line_2%></p>
-            <p>Neighborhood: <%= @site.neighborhood%></p>
-            <p>City: <%= @site.city%></p>
-            <p>State: <%= @site.state%></p>
-            <p>Contact Name: <%= @site.contact_name%></p>
-            <p>Contact email: <%= @site.contact_email%></p>   
+            <p>Business Name: <%= @audit.company.business_name%></p>
+            <p>CNPJ: <%= @audit.company.cnpj%></p>            
+            <p class="title-audit">Audit Adress</p>
+            <p>Branch in <%= @audit.site.city%></p>
+            <p><%= @audit.site.line_1%></p>
+            <p><%= @audit.site.line_2%></p>
+            <p>Neighborhood: <%= @audit.site.neighborhood%></p>
+            <p>City: <%= @audit.site.city%></p>
+            <p>State: <%= @audit.site.state%></p>
+            <p>Contact Name: <%= @audit.site.contact_name%></p>
+            <p>Contact email: <%= @audit.site.contact_email%></p>   
             <div class="divider"></div>
-            <% @sites.each do |site| %>
+            <% @audit.company.site.each do |site| %>
               <%if site.id != @audit.site.id %>
-                <p>Branch in <%= @site.city%></p>
-                <p><%= @site.line_1%></p>
-                <p><%= @site.line_2%></p>
-                <p>Neighborhood: <%= @site.neighborhood%></p>
-                <p>City: <%= @site.city%></p>
-                <p>State: <%= @site.state%></p>
-                <p>Contact Name: <%= @site.contact_name%></p>
-                <p>Contact email: <%= @site.contact_email%></p>                   
+                <p>Branch in <%= site.city%></p>
+                <p><%= site.line_1%></p>
+                <p><%= site.line_2%></p>
+                <p>Neighborhood: <%= site.neighborhood%></p>
+                <p>City: <%= site.city%></p>
+                <p>State: <%= site.state%></p>
+                <p>Contact Name: <%= site.contact_name%></p>
+                <p>Contact email: <%= site.contact_email%></p>                   
               <%end%>
             <% end %>
 
@@ -69,7 +69,7 @@
                 <p class="title-audit">Audit Team</p>
                 <div class="information">
                     <ul>
-                      <% @teams.each do |team| %>
+                      <% @audit.teams.each do |team| %>
                         <li><%= team.user.first_name %></li>
                       <%end%>
                     </ul>
@@ -79,7 +79,7 @@
                   <p class="title-audit">Job Position</p>
                   <div class="information">
                       <ul>
-                        <% @teams.each do |team| %>
+                        <% @audit.teams.each do |team| %>
                           <li><%= team.user.role %></li>
                         <%end%>
                       </ul>
@@ -109,12 +109,15 @@
               <%end%>
             </div>
             <div style="margin-top:25px;">
-              <% @evidences.each do |e| %>    
-                <p>
-                  <span><i class="material-icons" style="color: #4c4b4b;">assignment</i></span>
-                  <%= link_to e.title, e.doc, class: "evidences"%>
-                </p>
-              <% end%>
+                <% @evidences.each do |e| %>
+                    <p>
+                      <span><i class="material-icons" style="color: #4c4b4b;">assignment</i></span>
+                      <%= link_to e.title, e.doc, class: "evidences"%>
+                      <small style="text-decoration: underline;">
+                          <%= link_to "delete", evidence_path(e), method: :delete%>
+                      </small>
+                    </p>
+                <%end%>
             </div>
           </div>
         </div>

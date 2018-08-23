@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 PASSWORD = "adminLuciana"
 
+Evidence.delete_all
 RatReport.delete_all
 Team.delete_all
 Audit.delete_all
@@ -97,8 +98,8 @@ companies.each do |c|
             requirement: Faker::Company.bs,
             audit_doc: Faker::Company.bs,
             site: c.site.sample,
-            start_date: Date.today,
-            end_date: Faker::Date.between(2.days.ago, Date.today),
+            start_time: Date.today,
+            end_time: Faker::Date.between(2.days.ago, Date.today),
         )
         
         # if a.valid?

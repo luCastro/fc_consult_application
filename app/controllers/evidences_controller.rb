@@ -8,7 +8,7 @@ class EvidencesController < ApplicationController
         if @evidence.save
             redirect_to audit_path(@audit)
         else
-          @evidences = @audit.evidences.order(created_at: :desc)
+            @evidences = @audit.evidences.order(created_at: :desc)
           render "audits/show"
         end
     end
