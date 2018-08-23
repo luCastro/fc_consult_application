@@ -33,7 +33,13 @@ class RatReportsController < ApplicationController
             format.html
             format.pdf do 
                 render pdf: 'pdf',
-                template: 'rat_reports/pdf.html.erb'
+                template: 'rat_reports/pdf.html.erb',
+                page_size: 'Letter',
+                zoom: 1.3,
+                margin: {
+                    left: 20,
+                    right: 0
+                }
             end
         end
     end
