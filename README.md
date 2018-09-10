@@ -1,4 +1,4 @@
-# MVP - Web Applicatio for Fc Consult
+# MVP - Web Application for Fc Consult
 
 This MVP is the first step to create a web application for integrate management systems consultancy.
 Built to momitor and create higher quality standardizedocumentations and reports
