@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :delete, :destroy]
 
-  get('/', { to: 'welcome#index', as: 'home' })
+  # get('/', { to: 'welcome#index', as: 'home' })
 
 end
 

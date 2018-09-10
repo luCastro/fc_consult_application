@@ -4,7 +4,6 @@ class EvidencesController < ApplicationController
         @audit = Audit.find params[:audit_id]
         @evidence = Evidence.new evidence_params
         @evidence.audit = @audit
-        
         if @evidence.save
             redirect_to audit_path(@audit)
         else

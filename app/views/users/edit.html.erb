@@ -1,4 +1,68 @@
+    <header>
+          <nav class="nav-wrapper teal darken-1">
+              <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
+              <div>
+                  <p class="brand-logo center white-text nav-text-logo">Update your login </p>
+              </div>
+          </nav>
+    </header> 
 
-<h1>Update your login</h1>
 
-<%= render "form" %>
+    <div class="row">
+      <div class="col s12 first-col">
+      </div>
+      <div class="col s12 m12 l6 offset-l3 zero">
+        <div class="card white card-custom zero">
+          <div class="center">
+            <img class="responsive-img logo" src="/assets/fc_consult_login1.png">
+            <p class = "fc-font blue-grey-text">High-level Business Solutions</p>
+          </div>
+          <div class="card-content fc-grey">
+            <div class="app-name">
+              <p>
+                <span class="card-title">System for Internal Audits</span>
+                <h6>Sign In</h6>
+              </p> 
+              <div>
+                <%= form_for @user do |f| %>
+                    <% if @user.errors.present? %>
+                        <p>
+                        <%= @user.errors.full_messages.join(', ') %>
+                        </p>
+                    <% end %>
+
+                    <div>
+                        <%= f.label(:first_name) %>
+                        <%= f.text_field(:first_name) %>
+                    </div>
+
+                    <div>
+                        <%= f.label(:last_name) %>
+                        <%= f.text_field(:last_name) %>
+                    </div>
+
+                    <div>
+                        <%= f.label(:email) %>
+                        <%= f.text_field(:email) %>
+                    </div>
+
+                    <div>
+                        <%= f.label(:password) %>
+                        <%= f.text_field(:password) %>
+                    </div>
+
+                    <div>
+                        <%= f.label(:password_confirmation) %>
+                        <%= f.text_field(:password_confirmation) %>
+                    </div>                  
+                    <%= f.submit %>
+                <%end%>
+                </div>           
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+

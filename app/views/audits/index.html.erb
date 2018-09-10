@@ -16,7 +16,7 @@
 
         <% audits.each do |audit| %>
           <div>
-            <%= audit.activity %>
+           <%= audit.company.name %> -
             <%=link_to audit.activity, audit_path(audit) %>
           </div>
 
