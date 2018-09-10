@@ -1,0 +1,33 @@
+    <header>
+          <nav class="nav-wrapper teal darken-1">
+              <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
+              <div>
+                  <p class="brand-logo center white-text nav-text-logo">Your Audits - Calendar </p>
+              </div>
+          </nav>
+    </header> 
+
+
+  <main>
+    <div class="margin-cale">  
+      <%= month_calendar events: @audits do |date, audits| %>
+        
+        <%= date.day%>
+
+        <% audits.each do |audit| %>
+          <div>
+           <%= audit.company.name %> -
+            <%=link_to audit.activity, audit_path(audit) %>
+          </div>
+
+        <% end %>
+      <% end %>
+    </div>    
+  </main>
+      
+
+  </div>
+</body>
+          
+
+

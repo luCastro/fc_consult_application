@@ -1,0 +1,21 @@
+<header>
+        <nav class="nav-wrapper teal darken-1">
+            <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
+            <div>
+                <p class="brand-logo center white-text nav-text-logo">User Profile </p>
+            </div>
+        </nav>
+</header> 
+
+<main style="margin: 20px;">
+    <p>Name:</p>
+    <p><%=@user.full_name %></p>
+    <p>Role:</p>
+    <p><%=@user.role %></p>
+    <p>Email:</p>
+    <p><%=@user.email %></p>
+
+    <div>
+    <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
+    </div>
+</main>

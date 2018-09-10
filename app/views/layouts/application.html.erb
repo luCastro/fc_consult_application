@@ -5,11 +5,67 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
+  <body style="overflow: hidden">
+     
+    <div>
+        <ul id="slide-out" class="sidenav sidenav-fixed white">
+            <li>
+                <div>
+                    <img src="/assets/fc_consult_logo.png" class="img-background" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="user-view" style="height: 250px;">
+                    <div class="background">
+                        <img src="/assets/fc_side_background.jpg" class="img-background">
+                    </div>
+                    <div>
+                        <img class="circle" src="/assets/luciana_photo.jpg">
+                          <div class="user-data">
+                            <% if current_user.present? %>
+                              <div>
+                                  <span class="white-text name user-text">   
+                                    <%= current_user.full_name%>
+                                  </span>
+                              </div>
+                              <div>
+                                  <span class="white-text email" style="margin-top:16px;">
+                                      <%= current_user.email%>
+                                  </span>
+                              </div>
+                            <% end %>
+                          </div>
+                      </div>
+                </div>
+            </li>
+            <li>
+              
+            </li>
+            <% if current_user.present? %>
+                <li>
+                    <%= link_to 'User Profile', user_path(current_user.id)%>
+                </li>
+                <li>
+                    <%= link_to('Sign Out', session_path, method: :delete, class: "nav-text") %>
+                </li>
+                <li><a>Personal Notes</a></li>
+                <li><a>Team Messages</a></li>
+                <li>
+                    <%= link_to 'Audits', audits_path%>
+                </li>
+            <% end %>
+        </ul>    
+    </div>
+    
     <%= yield %>
-  </body>
+  <body>
 </html>
+
+
+
+

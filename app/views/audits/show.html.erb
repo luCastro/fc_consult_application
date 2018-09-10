@@ -1,0 +1,133 @@
+<header>
+      <nav class="nav-wrapper teal darken-1" style="position: fixed;">
+          <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
+          <div>
+              <p class="brand-logo center white-text nav-text-logo"> Audit Information </p>
+          </div>
+      </nav>
+</header> 
+
+<main style="padding-top: 120px;">
+  <div class= "row audit-data">
+    <div class="col l8">
+      <div class="card-panel white">
+        <div class="card-title audit">
+          <p class="title-audit">Audit</p>
+          <div class="information">
+            <p>Audit ID: <%= @audit.id%></p>
+            <p>Activity: <%= @audit.activity%></p>
+          </div>
+          <p class="title-audit">Company</p>
+          <div class="information">
+            <p>Business Name: <%= @audit.company.business_name%></p>
+            <p>CNPJ: <%= @audit.company.cnpj%></p>            
+            <p class="title-audit">Audit Adress</p>
+            <p>Branch in <%= @audit.site.city%></p>
+            <p><%= @audit.site.line_1%></p>
+            <p><%= @audit.site.line_2%></p>
+            <p>Neighborhood: <%= @audit.site.neighborhood%></p>
+            <p>City: <%= @audit.site.city%></p>
+            <p>State: <%= @audit.site.state%></p>
+            <p>Contact Name: <%= @audit.site.contact_name%></p>
+            <p>Contact email: <%= @audit.site.contact_email%></p>   
+            <div class="divider"></div>
+            <% @audit.company.site.each do |site| %>
+              <%if site.id != @audit.site.id %>
+                <p>Branch in <%= site.city%></p>
+                <p><%= site.line_1%></p>
+                <p><%= site.line_2%></p>
+                <p>Neighborhood: <%= site.neighborhood%></p>
+                <p>City: <%= site.city%></p>
+                <p>State: <%= site.state%></p>
+                <p>Contact Name: <%= site.contact_name%></p>
+                <p>Contact email: <%= site.contact_email%></p>                   
+              <%end%>
+            <% end %>
+
+            <div class="row">
+              <div class="col l3 test">
+                <p class="title-audit">Audit Start Date</p>
+                <div class="information">
+                  <p><%= @audit.start_time%></p>
+                </div>
+              </div>
+              <div class="col l3 test">
+                  <p class="title-audit">Audit End Date</p>
+                  <div class="information">
+                    <p><%= @audit.end_time%></p>
+                  </div>
+              </div>
+              <div class="col l6 test">
+                  <p class="title-audit">Target</p>
+                  <div class="information">
+                    <p><%= @audit.target%></p>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col l6">
+                <p class="title-audit">Audit Team</p>
+                <div class="information">
+                    <ul>
+                      <% @audit.teams.each do |team| %>
+                        <li><%= team.user.first_name %></li>
+                      <%end%>
+                    </ul>
+                </div>
+              </div>
+              <div class="col l6">
+                  <p class="title-audit">Job Position</p>
+                  <div class="information">
+                      <ul>
+                        <% @audit.teams.each do |team| %>
+                          <li><%= team.user.role %></li>
+                        <%end%>
+                      </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col l4">
+        <div class="card-panel white">
+          <div class="audit">
+            <p class="title-audit">Audit Evidences</p>
+            <div>
+              <%= form_for [@audit, @evidence] do |f| %>
+                <div>
+                    <%= f.label :title, class: "doc-label"%>
+                    <%= f.text_field :title %> 
+                </div>    
+                <div>
+                    <%= f.label :doc, "Documents", class: "doc-label"%>
+                    <%= f.file_field :doc, class: "doc-field" %>
+                </div>
+
+                  <%= f.submit "Upload"%>
+              <%end%>
+            </div>
+            <div style="margin-top:25px;">
+                <% @evidences.each do |e| %>
+                    <p>
+                      <span><i class="material-icons" style="color: #4c4b4b;">assignment</i></span>
+                      <%= link_to e.title, e.doc, class: "evidences"%>
+                      <small style="text-decoration: underline;">
+                          <%= link_to "delete", evidence_path(e), method: :delete%>
+                      </small>
+                    </p>
+                <%end%>
+            </div>
+          </div>
+        </div>
+          <div>
+            <% if (@rat_report.empty?)%>
+              <%= link_to('New Report', new_audit_rat_report_path(@audit.id), class: "btn waves-effect waves-light teal darken-1") %>
+            <%else%>
+              <%= link_to('Show Report', rat_report_path(@rat_report[0]), class:"btn waves-effect waves-light teal darken-1")%>
+            <%end%> 
+          </div>                
+    </div>
+  </div>
+</main>

@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FcConsultApplication</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= wicked_pdf_stylesheet_link_tag "application" -%>
+    <%= wicked_pdf_javascript_include_tag "number_pages" %>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+    <style>
+
+        .font {
+            font-size: 15px;
+        }
+
+    </style>
+  </head>
+  
+
+  <body>
+
+    <main style="padding-left:0">                   
+        <div class= "row audit-data">
+            <div class="col l12">
+                <div class="white">
+                    <div class="card-title">
+                        <div style="margin-bottom: 45px;">
+                            <%= image_tag wicked_pdf_asset_base64('fc_med.png') %>
+                        </div>
+                        <div class="center" style="margin-bottom: 50px;">
+                            <h4>Technical Activity Report</h4>
+                        </div>               
+                        <p class="title-audit">Audit Information</p>
+                            <div class="information">
+                                <div class="row">
+                                    <div class="col l8">
+                                        <p class="font"><span>Activity:</span><%= @rat_report.audit.activity%></p>
+                                    </div>
+                                    <div class="col l4">
+                                        <p class="font"><span>Process Number:</span><%= @rat_report.audit.process_number%></p>
+                                    </div>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="row">
+                                    <div class="col l4">
+                                        <p class="font"><span>Start Date:</span><%= @rat_report.audit.start_time%></p>
+                                    </div>
+                                    <div class="col l4">
+                                        <p class="font"><span>End Date:</span><%= @rat_report.audit.end_time%></p>
+                                    </div>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="center">
+                                    <% business_name = @rat_report.audit.company.business_name %>
+                                    <p class="font" style="font-size: 25px;"><%= business_name.upcase!%></p>
+                                    <p class="font" ><span>CNPJ:</span><%= @rat_report.audit.company.cnpj%></p>            
+                                    <p class="font" ><span>Audit Adress</span></p>
+                                    <p class="font">Branch in <%= @rat_report.audit.site.city%></p>
+                                    <p class="font"><%= @rat_report.audit.site.line_1%></p>
+                                    <p class="font"><%= @rat_report.audit.site.line_2%></p>
+                                    <p class="font" ><span>Neighborhood:</span> <%= @rat_report.audit.site.neighborhood%></p>
+                                    <p class="font"><span>City:</span><%= @rat_report.audit.site.city%></p>
+                                    <p class="font"><span>State:</span> <%= @rat_report.audit.site.state%></p>
+                                    <p class="font"><span>Contact Name:</span> <%= @rat_report.audit.site.contact_name%></p>
+                                    <p class="font"><span>Contact email:</span> <%= @rat_report.audit.site.contact_email%></p>
+                                    <p class="font"><span>Audit Scope:</span> <%= @rat_report.audit.scope%></p>
+                                </div>                   
+                                <div class="row">
+                                    <div>
+                                        <p class="title-audit">Activity Information</p>
+                                        <div class="information"> 
+                                            <div class="col l6">
+                                                <p class="font"><span>Target:</span></p>
+                                                <p class="font"><%= @rat_report.audit.target%></p>
+                                                <p class="font"><span>Audit Requirement:</span></p>
+                                                <p class="font"><%= @rat_report.audit.requirement%></p>
+                                                <p class="font"><span>Reference Documents:</span></p>
+                                                <p class="font"><%= @rat_report.audit.audit_doc%></p>
+                                            </div> 
+                                            <div class="col l6">
+                                                <p class="font"><span>Criterion:</span></p>
+                                                <p class="font"><%= @rat_report.audit.criterion%></p>
+                                                <p class="font"><span>Team:</span></p>
+                                                <ul>
+                                                    <% @rat_report.audit.teams.each do |t| %>
+                                                        <li><%= t.user.first_name%></li>
+                                                    <%end%>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <p class="title-audit ">Report Introduction</p>
+                                        <div class="information"> 
+                                            <div class="col l12">
+                                                <p class="font"><%= @rat_report.introduction%></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <p class="title-audit">Detailed Analysis of the Technical Activity</p>
+                                        <div class="information"> 
+                                            <div class="col l12">
+                                                <p class="font"><span>Comments:</span></p>
+                                                <p class="font"><%= @rat_report.comment%></p>>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <p class="title-audit">Observations</p>
+                                        <div class="information"> 
+                                            <div class="col l12">
+                                                <p class="font"><%= @rat_report.observation%></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <p class="title-audit">Improvements</p>
+                                        <div class="information"> 
+                                            <div class="col l12">
+                                                <p class="font"><%= @rat_report.improvement%></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <p class="title-audit">Conclusion</p>
+                                        <div class="information"> 
+                                            <div class="col l12">
+                                                <p class="font"><%= @rat_report.conclusion%></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+  <body>
+</html>

@@ -10,6 +10,20 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
+//= require popper
+//= require materialize
+//= require bootstrap
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+
+
+$(document).ready(function(){
+
+    console.log( "ready!" );
+    $('.sidenav').sidenav();
+
+}); 
+
+

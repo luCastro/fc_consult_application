@@ -1,0 +1,204 @@
+<header>
+      <nav class="nav-wrapper teal darken-1" style="position: fixed;">
+          <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
+          <div>
+              <p class="brand-logo center white-text nav-text-logo"> Technical Activity Report</p>
+          </div>
+      </nav>
+</header> 
+
+
+<main>
+    <div class= "row audit-data" style="padding-top: 120px;">
+        <div class="col l12">
+            <div class="right">
+                <%= link_to('Edit Report', edit_rat_report_path(@rat_report.id), class: "btn waves-effect waves-light teal darken-1")%>            
+                <%= link_to 'Create PDF document', rat_report_path(@rat_report, :format => :pdf), class: "btn waves-effect waves-light teal darken-1" %>
+            </div>
+        </div>
+    </div>                    
+    <div class= "row audit-data">
+        <div class="col l12">
+            <div class="card-panel white">
+                <div class="card-title audit">                
+                    <p class="title-audit">Audit Information</p>
+                        <div class="information">
+                            <div class="row">
+                                <div class="col l8">
+                                    <p><span>Activity:</span><%= @rat_report.audit.activity%></p>
+                                </div>
+                                <div class="col l4">
+                                    <p><span>Process Number:</span><%= @rat_report.audit.process_number%></p>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="row">
+                                <div class="col l4">
+                                    <p><span>Start Date:</span><%= @rat_report.audit.start_time%></p>
+                                </div>
+                                <div class="col l4">
+                                    <p><span>End Date:</span><%= @rat_report.audit.end_time%></p>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <% business_name = @rat_report.audit.company.business_name %>
+                            <p style="font-size: 25px;"><%= business_name.upcase!%></p>
+                            <p><span>CNPJ:</span><%= @rat_report.audit.company.cnpj%></p>            
+                            <p><span>Audit Adress</span></p>
+                            <p>Branch in <%= @rat_report.audit.site.city%></p>
+                            <p><%= @rat_report.audit.site.line_1%></p>
+                            <p><%= @rat_report.audit.site.line_2%></p>
+                            <p><span>Neighborhood:</span> <%= @rat_report.audit.site.neighborhood%></p>
+                            <p><span>City:</span><%= @rat_report.audit.site.city%></p>
+                            <p><span>State:</span> <%= @rat_report.audit.site.state%></p>
+                            <p><span>Contact Name:</span> <%= @rat_report.audit.site.contact_name%></p>
+                            <p><span>Contact email:</span> <%= @rat_report.audit.site.contact_email%></p>
+                            <p><span>Audit Scope:</span> <%= @rat_report.audit.scope%></p>     
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>                
+    <div class= "row audit-data">
+        <div class="col l12">
+            <div class="card-panel white">
+                <div class="card-title audit">                
+                    <p class="title-audit">Activity Information</p>
+                    <div class="information">
+                        <div class="row">
+                            <div class="col l6">
+                                <p><span>Target:</span></p>
+                                <p><%= @rat_report.audit.target%></p>
+                                <p><span>Audit Requirement:</span></p>
+                                <p><%= @rat_report.audit.requirement%></p>
+                                <p><span>Reference Documents:</span></p>
+                                <p><%= @rat_report.audit.audit_doc%></p>
+                            </div> 
+                            <div class="col l6">
+                                <p><span>Criterion:</span></p>
+                                <p><%= @rat_report.audit.criterion%></p>
+                                <p><span>Team:</span></p>
+                                <ul>
+                                    <% @rat_report.audit.teams.each do |t| %>
+                                        <li><%= t.user.first_name%></li>
+                                    <%end%>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class= "row audit-data">
+        <div class="col l12">
+            <div class="card-panel white">
+                <div class="card-title audit">                
+                    <p class="title-audit">Report Introduction</p>
+                    <div class="information">
+                        <div class="row">
+                            <div class="col l12">
+                                <p><%= @rat_report.introduction%></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class= "row audit-data">
+        <div class="col l12">
+            <div class="card-panel white">
+                <div class="card-title audit">                
+                    <p class="title-audit">Detailed analysis of the Technical Activity</p>
+                    <div class="information">
+                        <div class="row">
+                            <div class="col l12">
+                                <p><span>Comments:</span></p>
+                                <p><%= @rat_report.comment%></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class= "row audit-data">
+        <div class="col l12">
+            <div class="card-panel white">
+                <div class="card-title audit">                
+                    <p class="title-audit">Observations</p>
+                    <div class="information">
+                        <div class="row">
+                            <div class="col l12">
+                                <p><%= @rat_report.observation%></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class= "row audit-data">
+        <div class="col l12">
+            <div class="card-panel white">
+                <div class="card-title audit">                
+                    <p class="title-audit">Improvements</p>
+                    <div class="information">
+                        <div class="row">
+                            <div class="col l12">
+                                <p><%= @rat_report.improvement%></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class= "row audit-data">
+        <div class="col l12">
+            <div class="card-panel white">
+                <div class="card-title audit">                
+                    <p class="title-audit">Conclusion</p>
+                    <div class="information">
+                        <div class="row">
+                            <div class="col l12">
+                                <p><%= @rat_report.conclusion%></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<%# <!-- 
+Data da Atividade: 1/1/0001	Duração:2 dias / 2 hd's dia(s)
+Objetivo: Verificar se o sistema da gestão certificado continua a atender aos requisitos, entre as auditorias de recertificação. 
+Critérios: 
+ABNT NBR ISO 9001:2008 
+
+Equipe Auditora / Avaliadora: 
+Francisco Carlos Castro Silva (Auditor-Líder) - 2 dias 
+» 4/9/2017 (dia inteiro)
+» 5/9/2017 (dia inteiro) --> %>
+
+<%# <!-- 
+
+
+Sites Auditados:
+Filial - Bahia (Rua D – Poloplast, Galpão 01 S/N - JD. LIMOEIRO)
+Filial Pernambuco (Rua Coronel Anízio Rodrigues Coelho, nº 464 - 4º andar - Boa Viagem )
+Matriz (Logística e Produção) (- BR 101, Nº 4005 – galpão M - Barro)
+
+
+Quaisquer mudanças ou diferenças que ocorram durante a auditoria devem ser relatadas na seção “comentários”. Caso ocorra uma redução da quantidade de sites previstos inicialmente, as eventuais alterações devem ser relatadas na seção “observações”. 
+Requisitos Auditados:
+4.2, 5.6, 7.1, 7.5, 8.2, 8.3, 8.5, USO DAS MARCAS; 6.4, 7.2, 7.3, 7.4, 7.6, 8.1 e 8.4. 
+
+
+Outros Documentos de Referência
+PG-02 PG-15 PE-004 Documentação do Sistema de Gestão da Organização --> %>
