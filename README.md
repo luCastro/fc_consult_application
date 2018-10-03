@@ -1,10 +1,10 @@
 # MVP - Web Application for Fc Consult
 
 This MVP is the first step to create a web application for integrate management systems consultancy.
-Built to momitor and create higher quality standardizedocumentations and reports
+Built to monitor and create higher quality standardize documentations and reports
 
 It will be create with Ruby, Materialize ande Java Script.
-Before this MVP the front-end will be re-build in React
+Before this MVP the front-end will be re-build in React.
 
 
 Things you may want to cover:
